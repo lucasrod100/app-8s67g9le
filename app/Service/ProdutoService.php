@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Repository\Contracts\ProdutoRepositoryInterface;
+use App\Service\Contracts\EstoqueServiceInterface;
 use App\Service\Contracts\ProdutoServiceInterface;
 use Illuminate\Support\Facades\Validator;
 use App\DTO\ProdutoDTO;
@@ -15,11 +16,18 @@ class ProdutoService implements ProdutoServiceInterface
     private ProdutoRepositoryInterface $produtoRepository;
 
     /**
-     * @param ProdutoRepositoryInterface $produtoRepository
+     * @var EstoqueServiceInterface
      */
-    public function __construct(ProdutoRepositoryInterface $produtoRepository)
+    private EstoqueServiceInterface $estoqueService;
+
+    /**
+     * @param ProdutoRepositoryInterface $produtoRepository
+     * @param EstoqueServiceInterface $estoqueService
+     */
+    public function __construct(ProdutoRepositoryInterface $produtoRepository, EstoqueServiceInterface $estoqueService)
     {
         $this->produtoRepository = $produtoRepository;
+        $this->estoqueService = $estoqueService;
     }
 
     /**
@@ -33,7 +41,7 @@ class ProdutoService implements ProdutoServiceInterface
 
         $produto = $this->produtoRepository->inserir($produtoDTO);
 
-        //chamar o serviço de estoque para incluir o estoque inicial do produto
+        $this->estoqueService->criarEstoqueInicial($produto->id, $produtoDTO->getQuantidadeInicial());
 
         return $produto;
     }

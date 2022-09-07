@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovimentacaoEstoqueController;
+use App\Http\Controllers\EstoqueController;
 use App\Http\Controllers\ProdutoController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +17,7 @@ use App\Http\Controllers\ProdutoController;
 */
 
 Route::post('/produto', [ProdutoController::class, 'inserirProduto']);
+Route::post('/produto/movimentar', [EstoqueController::class, 'movimentarProdutoEstoque']);
+Route::get(
+    '/produto/historicoMovimentacao', [MovimentacaoEstoqueController::class, 'retornarHistoricoMovimentacao']
+);
