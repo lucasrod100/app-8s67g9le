@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "345edaea-32cf-4a44-8ab2-4dbedbf5cf4b",
+		"name": "prova-appmax",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "inserirProduto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nome",
+							"value": "teste_produto",
+							"type": "text"
+						},
+						{
+							"key": "sku",
+							"value": "S11PU5KIP",
+							"type": "text"
+						},
+						{
+							"key": "quantidadeInicial",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/produto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"produto"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimentarProduto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "sku",
+							"value": "S11PU5KIP",
+							"type": "text"
+						},
+						{
+							"key": "quantidade",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tipoMovimentacao",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/produto/movimentar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"produto",
+						"movimentar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "historicoMovimentacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/produto/historicoMovimentacao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"produto",
+						"historicoMovimentacao"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

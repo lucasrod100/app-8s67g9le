@@ -23,3 +23,6 @@ as seguintes tecnologias na versão:
 - Repository Pattern: Utilizando para isolar a camada de acesso aos dados
 - DTO: utilizando para fazer a trasferência dos dados entre as camadas
 
+## Postman
+
+Collection do postman para testar os endpoints: ./prova-appmax.postman_collection.json
